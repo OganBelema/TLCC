@@ -1,11 +1,14 @@
 package com.example.ogan.tlcc;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -59,6 +62,8 @@ public class HomeScreen extends AppCompatActivity {
                     FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
                     fragmentTransaction1.replace(R.id.containerView, new PastorFragment()).commit();
                     fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(R.mipmap.ic_back_button);
                 }
 
                 return false;
@@ -72,12 +77,40 @@ public class HomeScreen extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true); // show back button
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onBackPressed();
+                        }
+                    });
+                } else {
+                    //show hamburger
+                    nDrawLayout.addDrawerListener(nToggle);
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    nToggle.syncState();
+                    toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            nDrawLayout.openDrawer(GravityCompat.START);
+                        }
+                    });
+                }
+            }
+        });
 
 
     }
-//For the toggle
-     @Override
+
+
+
+
+    //For the toggle
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
 
         if(nToggle.onOptionsItemSelected(item)){
