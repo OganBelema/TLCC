@@ -6,8 +6,12 @@
           <option name="url" value="https://github.com/compunetdevteam/TLCC_Android_App.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/OganBelema/TLCC.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="$USER_HOME$/Desktop" />
+    <option name="cloneParentDir" value="$USER_HOME$/Desktop/TLCC" />
   </component>
 </application>

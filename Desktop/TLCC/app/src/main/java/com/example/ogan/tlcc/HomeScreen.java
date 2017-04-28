@@ -61,9 +61,10 @@ public class HomeScreen extends AppCompatActivity {
                 if(item.getItemId()==R.id.nav_pastor_profile){
                     FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
                     fragmentTransaction1.replace(R.id.containerView, new PastorFragment()).commit();
+                    toolbar.setTitle("Pastor Profile");
                     fragmentTransaction1.addToBackStack(null);
-                    nToggle.setDrawerIndicatorEnabled(false);
-                    nToggle.setHomeAsUpIndicator(R.mipmap.ic_back_button);
+                    //nToggle.setDrawerIndicatorEnabled(false);
+                    //nToggle.setHomeAsUpIndicator(R.mipmap.ic_back_button);
                 }
 
                 return false;
@@ -92,6 +93,7 @@ public class HomeScreen extends AppCompatActivity {
                     //show hamburger
                     nDrawLayout.addDrawerListener(nToggle);
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    toolbar.setTitle("TLCC");
                     nToggle.syncState();
                     toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                         @Override
