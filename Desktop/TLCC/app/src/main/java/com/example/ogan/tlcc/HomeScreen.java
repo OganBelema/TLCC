@@ -79,6 +79,62 @@ public class HomeScreen extends AppCompatActivity {
                     nToggle.setDrawerIndicatorEnabled(false);
                     nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
                 }
+                else if(item.getItemId()==R.id.nav_store){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new Store()).commit();
+                    toolbar.setTitle("Store");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_ePayment){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new Give()).commit();
+                    toolbar.setTitle("Give");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_liveStream){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new StreamService()).commit();
+                    toolbar.setTitle("Live Service");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_prayHands){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new PrayerRequest()).commit();
+                    toolbar.setTitle("Prayer Request");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_houseFellowship){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new FellowshipCenter()).commit();
+                    toolbar.setTitle("Fellowship Centers");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_downloads){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new Downloads()).commit();
+                    toolbar.setTitle("My Downloads");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_facebook){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new FacebookFragment()).commit();
+                    toolbar.setTitle("Facebook");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
 
                 return false;
             }
