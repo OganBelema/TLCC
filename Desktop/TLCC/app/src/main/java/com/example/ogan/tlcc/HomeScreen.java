@@ -1,16 +1,11 @@
 package com.example.ogan.tlcc;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,12 +13,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.FrameLayout;
-import android.widget.Toast;
-
-
-
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -57,14 +46,38 @@ public class HomeScreen extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 nDrawLayout.closeDrawers();
 
-
-                if(item.getItemId()==R.id.nav_pastor_profile){
+//for the individual menus
+                if(item.getItemId()==R.id.nav_signIn){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new MyAccount()).commit();
+                    toolbar.setTitle("My Account");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_pastor_profile){
                     FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
                     fragmentTransaction1.replace(R.id.containerView, new PastorFragment()).commit();
                     toolbar.setTitle("Pastor Profile");
                     fragmentTransaction1.addToBackStack(null);
-                    //nToggle.setDrawerIndicatorEnabled(false);
-                    //nToggle.setHomeAsUpIndicator(R.mipmap.ic_back_button);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_sermons){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new Sermons()).commit();
+                    toolbar.setTitle("Sermons");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
+                }
+                else if(item.getItemId()==R.id.nav_gallery){
+                    FragmentTransaction fragmentTransaction1 = FM.beginTransaction();
+                    fragmentTransaction1.replace(R.id.containerView, new Gallery()).commit();
+                    toolbar.setTitle("Gallery");
+                    fragmentTransaction1.addToBackStack(null);
+                    nToggle.setDrawerIndicatorEnabled(false);
+                    nToggle.setHomeAsUpIndicator(android.support.v7.appcompat.R.drawable.abc_ic_ab_back_material);
                 }
 
                 return false;
@@ -78,6 +91,7 @@ public class HomeScreen extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //getting the fragment return to home page
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -91,6 +105,7 @@ public class HomeScreen extends AppCompatActivity {
                     });
                 } else {
                     //show hamburger
+                    nToggle.setDrawerIndicatorEnabled(true); //making the toggle come back
                     nDrawLayout.addDrawerListener(nToggle);
                     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                     toolbar.setTitle("TLCC");
